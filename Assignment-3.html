@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>My First React app</title>
+  </head>
+  <body>
+
+    <div id="app"></div>
+    <div id="app2"></div>
+    <div id="app3"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.1.0/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.1.0/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+
+    <script type="text/babel">
+       class ShopList extends React.Component {
+         render() {
+           return (
+             <div>
+               <h1>Shopping list</h1>
+             </div>
+           );
+         }
+       }
+
+       ReactDOM.render(
+         <ShopList />, document.getElementById('app')
+       );
+
+       class Products extends React.Component {
+         render() {
+           return (
+             <div>
+               <ul>
+                 <li>Red paint</li>
+                 <li>Blue paint</li>
+                 <li>Green paint</li>
+                </ul>
+             </div>
+           );
+         }
+       }
+
+       ReactDOM.render(
+         <Products />, document.getElementById('app2')
+       );
+
+       class Button extends React.Component {
+         render() {
+           return (
+             <div>
+               <button>ADD</button>
+             </div>
+           );
+         }
+       }
+
+       ReactDOM.render(
+         <Button />, document.getElementById('app3')
+       );
+    </script>
+  </body>
+</html>
