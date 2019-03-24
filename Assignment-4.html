@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>My First React app</title>
+    <style>
+    body {
+    background-color: powderblue;
+
+    }
+    h2{
+      text-align: center;
+      background-color: beige;
+    }
+
+   #clock{
+     text-align: center;
+     background-color: beige;
+   }
+    </style>
+  </head>
+  <body>
+    <div id="greeting"></div>
+    <div id="app"></div>
+    <div id="app2"></div>
+    <div id="app3"></div>
+    <div id="clock"></div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.1.0/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.1.0/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+
+    <script type="text/babel">
+
+    const name = 'Madalina';
+    const element = <h2>Hello, {name}</h2>;
+
+    ReactDOM.render(
+      element,
+      document.getElementById('greeting')
+    );
+
+       class ShopList extends React.Component {
+         render() {
+           return (
+             <div>
+               <h3>This is your shopping list</h3>
+             </div>
+           );
+         }
+       }
+       ReactDOM.render(
+         <ShopList />, document.getElementById('app')
+       );
+
+
+       class Products extends React.Component {
+         constructor(props){
+           super(props);
+           this.state = {
+             number: 3
+           }
+         }
+         render() {
+           return (
+             <div>
+               <ul>
+                 <li>Red paint price: {this.props.label}</li>
+                 <li>Blue paint price: {this.props.label1}</li>
+                 <li>Green paint price: {this.props.label}</li>
+                </ul>
+                <h4>Total items: {this.state.number}</h4>
+             </div>
+
+           );
+         }
+       }
+
+       Products.defaultProps = {
+         label: 5,
+         label1: 4,
+       }
+       ReactDOM.render(
+         <Products />, document.getElementById('app2')
+       );
+
+
+
+       class Button extends React.Component {
+         constructor(props) {
+           super(props);
+           this.state = {
+             label: 5,
+             label1: 4,
+             label2: 5,
+             answer: 0,
+           }
+         }
+
+         calc(event) {
+           this.setState({
+             answer:this.state.label + this.state.label1+ this.state.label2
+           })
+         }
+
+         render() {
+           return (
+             <div>
+             <h4>Total prices:</h4>
+               <button onClick={this.calc.bind(this)}>{this.state.label + this.state.label1 + this.state.label2}</button>
+             </div>
+           );
+         }
+       }
+
+       ReactDOM.render(
+         <Button />, document.getElementById('app3')
+       );
+
+
+       function time() {
+         const element = (
+           <div>
+           <h3>It is {new Date().toLocaleTimeString()}.</h3>
+           </div>
+         );
+      ReactDOM.render(
+        element, document.getElementById('clock')
+      );
+    }
+
+    setInterval(time, 1000);
+
+    </script>
+  </body>
+</html>
